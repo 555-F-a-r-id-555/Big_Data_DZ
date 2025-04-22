@@ -4,7 +4,7 @@
 Сделайте mapper и reducer, чтобы посчитать среднее и дисперсию оценок за фильм.
 ```
 
-## 1. DZ_2
+## 2. DZ_2
 
 ```text
 Урок 2. SQL & Big Data
@@ -176,3 +176,55 @@ datanode:
 
 
  ```
+
+## 3. DZ_3
+
+```text
+Домашнее задание
+
+1. Соберите данные о погоде в разных городах мира за последний месяц.
+Используйте открытые источники данных, такие как API погодных
+сервисов или веб-скрейпинг.
+
+2. Выведете график изменения температуры в разных городах, график
+распределения температуры.
+3. Сохранить результаты в HDFS
+4. Выгрузить результаты из HDFS на локальный компьютер
+```
+
+Решение с помошью Pandas, без Superset.
+Использую контейнер из прошлой домашки DZ2
+
+1. git clone <https://github.com/big-data-europe/docker-hive>
+2. mkdir scripts
+3. mv scripts docker-hive
+4. cd .\docker-hive\
+5. cd .\scripts\
+6. echo > fetch_weather.py
+7. echo > plot_weather.py
+8. docker-compose up -d
+9. docker exec -it python bash
+10. pip install pandas matplotlib seaborn requests
+11. python fetch_weather.py
+12. python plot_weather.py
+13. exit
+
+* Сохранить результаты в HDFS
+
+14. docker cp scripts/weather_data.csv namenode:/tmp/
+15. docker exec -it namenode bash
+16. hdfs dfs -ls /
+17. hdfs dfs -mkdir -p /data/weather
+18. hdfs dfs -put /tmp/weather_data.csv /data/weather/
+
+* Проверка , что файл в HDFS
+
+19. hdfs dfs -ls /data/weather
+
+* Выгружаем из HDFS обратно на локальную машину
+
+20. docker exec -it namenode bash
+21. mkdir -p /scripts
+22. hdfs dfs -get /data/weather/weather_data.csv /scripts/weather_data_from_hdfs.csv
+23. exit
+24. docker cp namenode:/scripts/weather_data_from_hdfs.csv ./scripts/weather_data_from_hdfs.csv
