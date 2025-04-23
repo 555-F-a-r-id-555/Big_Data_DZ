@@ -484,4 +484,4 @@ superset.Dockerfile:
   * METRICS: AVG(temperature_2m_max)
   * DIMENSIONS: city
 * Save as->Chart Name->weather_data_line_chart
-* Далее создадим Bar chart и histogram(подробно описывать не буду, создается аналогичным способом, толко привиду картинки в Imagesso и weather-data-2025-04-23T01-37-59.161Z.pdf - результат того, что получилось)
+* Далее создадим Bar chart и histogram(подробно описывать не буду, создается аналогичным способом, толко привиду картинки в Images и weather-data-2025-04-23T01-37-59.161Z.pdf - результат того, что получилось)
