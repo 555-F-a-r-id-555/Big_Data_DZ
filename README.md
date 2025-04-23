@@ -379,6 +379,8 @@ superset.Dockerfile:
 
 ```
 
+</details>
+
 5. Заходим в папку на локальном PC:
 
 * cd task03.2
